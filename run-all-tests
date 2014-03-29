@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -e
 me=`readlink -e $0`
 my_dir=`dirname $me`
 
@@ -8,12 +9,7 @@ do
     the_dir=`dirname $rt`
     echo Testing $the_dir
     cd $the_dir
-    ./run-tests
-    if [ $? -ne 0 ]
-    then
-        echo Failures in $the_dir, aborting
-        exit 1
-    fi
+    ./run-tests || (echo "Failures in $the_dir, aborting" ; exit 1)
     cd $my_dir
 done
 echo Yay, all tests pass
