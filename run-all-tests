@@ -1,15 +1,15 @@
 #!/bin/sh
 
 set -e
-me=`readlink -e $0`
-my_dir=`dirname $me`
 
-for rt in `find $my_dir -name run-tests`
+cd `dirname $0`
+
+for rt in `find . -name run-tests`
 do
     the_dir=`dirname $rt`
     echo Testing $the_dir
-    cd $the_dir
+    pushd $the_dir
     ./run-tests || (echo "Failures in $the_dir, aborting" ; exit 1)
-    cd $my_dir
+    popd
 done
 echo Yay, all tests pass
