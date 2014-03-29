@@ -3,7 +3,7 @@
 me=`readlink -e $0`
 my_dir=`dirname $me`
 
-for rt in `find -name run-tests`
+for rt in `find $my_dir -name run-tests`
 do
     the_dir=`dirname $rt`
     echo Testing $the_dir
