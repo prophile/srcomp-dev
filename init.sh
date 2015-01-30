@@ -40,15 +40,16 @@ if [ -z "$PYTHON" ]; then
 fi
 
 set -e
+$PYTHON -m venv venv
+source venv/bin/activate
 set -v
+pip install -r requirements.txt
 clone_srobo comp/ranker.git ranker
 clone_srobo comp/srcomp.git srcomp
 clone_srobo comp/srcomp-http.git srcomp-http
 clone_srobo comp/srcomp-screens.git srcomp-screens
 clone_srobo comp/dummy-comp.git dummy-comp
 clone_gh prophile/srcomp-stream.git srcomp-stream
-$PYTHON -m venv venv
-source venv/bin/activate
 cd ranker
     python setup.py develop
 cd ..
@@ -59,7 +60,7 @@ cd srcomp-http
     python setup.py develop
 cd ..
 cd srcomp-stream
-    sed 's/SRCOMP: (.*)/SRCOMP: "http://localhost:5112"/' <config.coffee.example >config.coffee
+    sed 's_SRCOMP: (.*)_SRCOMP: "http://localhost:5112"_' <config.coffee.example >config.coffee
     npm install
 cd ..
 echo "-- DONE SETUP --"
