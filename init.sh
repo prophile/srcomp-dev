@@ -63,6 +63,7 @@ cd srcomp-stream
     sed 's_SRCOMP: (.*)_SRCOMP: "http://localhost:5112"_' <config.coffee.example >config.coffee
     npm install
 cd ..
+set +v
 echo "-- DONE SETUP --"
 echo "Usage: "
 echo "  (1) Activate the virtualenv: source venv/bin/activate"
