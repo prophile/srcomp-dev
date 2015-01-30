@@ -59,6 +59,10 @@ cd ..
 cd srcomp-http
     python setup.py develop
 cd ..
+cd srcomp-screens
+    git checkout rewrite
+    bower install
+cd ..
 cd srcomp-stream
     sed 's_SRCOMP: (.*)_SRCOMP: "http://localhost:5112"_' <config.coffee.example >config.coffee
     npm install
