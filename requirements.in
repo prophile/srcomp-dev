@@ -14,7 +14,7 @@ pytz
 PyYAML<=4
 reportlab
 requests
-ruamel.yaml<0.15
+ruamel.yaml<0.16
 simplejson
 six
 Sphinx
